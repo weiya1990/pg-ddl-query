@@ -15,7 +15,7 @@ docker build -t ddl-sysnc:alpine .
 
 ```bash
  #把sql文件和数据库配置文件挂载到容器中
- docker run -it --rm -v /opt/pg-ddl-sync:/opt/python/etc  ddl-sysnc:alpine
+ docker run -it --rm -v ${pwd}/pg-ddl-sync:/opt/python/etc  ddl-sysnc:alpine
 ```
 
 
