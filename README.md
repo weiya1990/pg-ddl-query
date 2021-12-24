@@ -8,14 +8,14 @@ docker方式启动
 
 ```bash
 cd pg-ddl-query
-docker build -t ddl-sysnc:alpine .
+docker build -t ddl-sync:alpine .
 ```
 
 启动容器测试：
 
 ```bash
  #把sql文件和数据库配置文件挂载到容器中
- docker run -it --rm -v ${pwd}/pg-ddl-sync:/opt/python/etc  ddl-sysnc:alpine
+ docker run -it --rm -v ${pwd}/pg-ddl-sync:/opt/python/etc  ddl-sync:alpine
 ```
 
 
