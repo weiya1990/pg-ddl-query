@@ -4,5 +4,4 @@ WORKDIR /opt/python
 RUN mkdir -p /opt/python/etc
 ADD ddl-sync.py start.py
 ADD db.conf etc/db.conf
-ENV CONFIG_DIR=/opt/python/etc
 CMD ["python", "-u", "start.py"]
