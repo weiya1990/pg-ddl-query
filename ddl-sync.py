@@ -3,6 +3,7 @@ import psycopg2
 import configparser
 import logging
 import threading
+from time import sleep
 logging.basicConfig(level=logging.INFO,format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s') 
 # config_dir = os.getenv('CONFIG_DIR')
 
@@ -29,6 +30,7 @@ file = os.path.join(os.path.dirname(__file__),'etc/db.conf')
 config.read(file, encoding="utf-8")
 
 group_list = config.sections()
+   
 for i in group_list:
     # logging.info("正在连接从库%s执行命令" %(i))
     # logging.info("-------------------------------------------------------")
@@ -42,6 +44,11 @@ for i in group_list:
         try:
             t = threading.Thread(target=query_sql, args=(i, database, user, password, host, port, cmd))
             t.start()  
-        except psycopg2.Error as errorMsg:
-            logging.error(errorMsg)
-            #print(errorMsg)    
+        except Exception as errorMsg:
+            logging.error('数据库报错%s'%(errorMsg))
+            pass
+           
+        continue
+while True:
+    logging.info('本次sql执行完毕')
+    sleep(100000)
