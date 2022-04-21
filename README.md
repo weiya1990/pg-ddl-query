@@ -7,6 +7,8 @@ docker方式启动
 构建镜像：
 
 ```bash
+cd /opt
+git clone xxxx
 cd pg-ddl-query
 docker build -t ddl-sync:alpine .
 ```
@@ -15,7 +17,8 @@ docker build -t ddl-sync:alpine .
 
 ```bash
  #把sql文件和数据库配置文件挂载到容器中
- docker run -it --rm -v ${pwd}/pg-ddl-sync:/opt/python/etc  ddl-sync:alpine
+
+ docker run -it --rm -v /opt/pg-ddl-sync:/opt/python/etc  ddl-sync:alpine
 ```
 
 
